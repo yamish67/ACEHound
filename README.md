@@ -41,92 +41,6 @@ wine ACEHound.exe --help
 
 > Linux requires Wine to run the Windows binary.
 
-
-
-## 🎯 Designed for Penetration Testers
-
-ACEHound focuses on one of the most important areas of Active Directory security: **ACL-based privilege relationships**.
-
-During an assessment, it can help answer questions such as:
-
-* Who has `GenericAll` over this object?
-* Which principals can modify this user or group?
-* Who has dangerous permissions over privileged objects?
-* What inbound permissions exist on a target?
-* What outbound permissions does a principal have?
-* Which SIDs correspond to actual users or groups?
-* Which ACLs may represent privilege-escalation opportunities?
-* What security impact does a particular ACE have?
-* What tools or attack techniques are commonly associated with the permission?
-
-Example:
-
-```text
-[LOW-PRIVILEGED USER]
-        |
-        | GenericAll
-        v
-[PRIVILEGED AD OBJECT]
-```
-
-ACEHound makes these relationships easier for a penetration tester to identify and investigate.
-
----
-
-## 🔴 Penetration Testing Features
-
-### Active Directory Reconnaissance
-
-* Domain discovery
-* RootDSE enumeration
-* Base DN discovery
-* User enumeration
-* Group enumeration
-* Computer enumeration
-* Group membership enumeration
-
-### ACL Enumeration & Analysis
-
-* Security descriptor enumeration
-* ACE parsing
-* Active Directory permission analysis
-* Interesting ACL detection
-* Dangerous permission identification
-* SID resolution
-* Principal resolution
-
-### Attack-Path & Relationship Analysis
-
-* Inbound ACL relationships
-* Outbound ACL relationships
-* Principal → Object relationships
-* Object → Principal relationships
-* ACL relationship graph
-* Security-relevant relationship identification
-
-### Security-Relevant Permissions
-
-ACEHound can identify permissions commonly investigated during Active Directory penetration tests, including:
-
-```text
-GenericAll
-GenericWrite
-WriteDacl
-WriteOwner
-WriteProperty
-WriteMembers
-AddMember
-ForceChangePassword
-AllExtendedRights
-WriteAllowedToAct
-RBCD-related permissions
-GMSA-related permissions
-```
-
-The exact security impact depends on the target object, principal, inheritance, and surrounding AD configuration.
-
----
-
 ## 🚀 Usage
 
 ACEHound is a command-line Active Directory ACL analysis tool.
@@ -239,14 +153,96 @@ ACEHound interesting
 ACEHound permission GenericAll
 ACEHound permission GenericWrite
 ACEHound user administrator
+
+## 🎯 Designed for Penetration Testers
+
+ACEHound focuses on one of the most important areas of Active Directory security: **ACL-based privilege relationships**.
+
+During an assessment, it can help answer questions such as:
+
+* Who has `GenericAll` over this object?
+* Which principals can modify this user or group?
+* Who has dangerous permissions over privileged objects?
+* What inbound permissions exist on a target?
+* What outbound permissions does a principal have?
+* Which SIDs correspond to actual users or groups?
+* Which ACLs may represent privilege-escalation opportunities?
+* What security impact does a particular ACE have?
+* What tools or attack techniques are commonly associated with the permission?
+
+Example:
+
+```text
+[LOW-PRIVILEGED USER]
+        |
+        | GenericAll
+        v
+[PRIVILEGED AD OBJECT]
 ```
 
-This workflow starts with tool discovery, identifies interesting ACLs, searches for specific permissions, and then investigates relationships associated with a particular user.
+ACEHound makes these relationships easier for a penetration tester to identify and investigate.
 
+---
+
+## 🔴 Penetration Testing Features
+
+### Active Directory Reconnaissance
+
+* Domain discovery
+* RootDSE enumeration
+* Base DN discovery
+* User enumeration
+* Group enumeration
+* Computer enumeration
+* Group membership enumeration
+
+### ACL Enumeration & Analysis
+
+* Security descriptor enumeration
+* ACE parsing
+* Active Directory permission analysis
+* Interesting ACL detection
+* Dangerous permission identification
+* SID resolution
+* Principal resolution
+
+### Attack-Path & Relationship Analysis
+
+* Inbound ACL relationships
+* Outbound ACL relationships
+* Principal → Object relationships
+* Object → Principal relationships
+* ACL relationship graph
+* Security-relevant relationship identification
+
+### Security-Relevant Permissions
+
+ACEHound can identify permissions commonly investigated during Active Directory penetration tests, including:
+
+```text
+GenericAll
+GenericWrite
+WriteDacl
+WriteOwner
+WriteProperty
+WriteMembers
+AddMember
+ForceChangePassword
+AllExtendedRights
+WriteAllowedToAct
+RBCD-related permissions
+GMSA-related permissions
+```
+
+The exact security impact depends on the target object, principal, inheritance, and surrounding AD configuration.
+
+---
 
 
 
 ## 🧭 Pentesting Workflow
+This workflow starts with tool discovery, identifies interesting ACLs, searches for specific permissions, and then investigates relationships associated with a particular user.
+
 
 ACEHound can be used as part of an Active Directory assessment workflow:
 
