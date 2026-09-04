@@ -16,7 +16,7 @@ ACEHound is designed to help penetration testers quickly understand **who has co
 
 ### Windows
 
-Download `ACEHound.exe` from the repository and run:
+Download the latest compiled `ACEHound.exe` from the [Releases](https://github.com/yamish67/ACEHound/releases) page. and run:
 
 ```powershell
 ACEHound.exe --help
