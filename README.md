@@ -12,6 +12,36 @@ ACEHound is designed to help penetration testers quickly understand **who has co
 > **Built for authorized penetration testing, red-team operations, Active Directory security assessments, labs, CTFs, and security research.**
 
 ---
+## 📥 Download
+
+### Windows
+
+Download `ACEHound.exe` from the repository and run:
+
+```powershell
+ACEHound.exe --help
+```
+
+### Linux
+
+Clone the repository:
+
+```bash
+git clone https://github.com/yamish67/ACEHound.git
+cd ACEHound
+```
+
+Or download the repository as a ZIP from GitHub.
+
+Run the Windows binary with Wine:
+
+```bash
+wine ACEHound.exe --help
+```
+
+> Linux requires Wine to run the Windows binary.
+
+
 
 ## 🎯 Designed for Penetration Testers
 
@@ -97,6 +127,121 @@ The exact security impact depends on the target object, principal, inheritance, 
 
 ---
 
+## 🚀 Usage
+
+ACEHound is a command-line Active Directory ACL analysis tool.
+
+### Basic Usage
+
+```powershell
+ACEHound <command> [argument]
+```
+
+### Available Commands
+
+| Command                   | Description                                                                                                   |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `--help`                  | Display ACEHound usage information, available commands, and examples.                                         |
+| `--version`               | Display the current ACEHound version and author information.                                                  |
+| `interesting`             | Identify security-relevant and potentially dangerous Active Directory ACL permissions.                        |
+| `user <username>`         | Analyze ACL relationships for a specific user, including inbound and outbound permissions and SID resolution. |
+| `permission <permission>` | Search for principals that have a specific Active Directory permission.                                       |
+
+### Command Examples
+
+#### `--help`
+
+Displays available commands and usage information.
+
+```powershell
+ACEHound --help
+```
+
+---
+
+#### `--version`
+
+Displays the current ACEHound version.
+
+```powershell
+ACEHound --version
+```
+
+---
+
+#### `interesting`
+
+Searches Active Directory ACLs for security-relevant permissions that may warrant further investigation during a penetration test.
+
+```powershell
+ACEHound interesting
+```
+
+---
+
+#### `user <username>`
+
+Analyzes ACL relationships associated with a specific Active Directory user.
+
+The command can display:
+
+* Inbound permissions
+* Outbound permissions
+* SID-to-account resolution
+* Security-relevant ACL relationships
+* Permission relationships involving the selected user
+
+Example:
+
+```powershell
+ACEHound user administrator
+```
+
+---
+
+#### `permission <permission>`
+
+Searches Active Directory for a specific permission and shows the principals associated with that permission.
+
+Example:
+
+```powershell
+ACEHound permission GenericAll
+```
+
+Other supported examples:
+
+```powershell
+ACEHound permission GenericWrite
+ACEHound permission ForceChangePassword
+ACEHound permission AddMember
+ACEHound permission ReadGMSAPassword
+```
+
+This allows a tester to quickly answer questions such as:
+
+```text
+Who has GenericAll?
+Who has GenericWrite?
+Who can ForceChangePassword?
+Who has AddMember?
+Who can ReadGMSAPassword?
+```
+
+### Example Workflow
+
+A basic ACEHound assessment workflow can be:
+
+```powershell
+ACEHound --help
+ACEHound --version
+ACEHound interesting
+ACEHound permission GenericAll
+ACEHound permission GenericWrite
+ACEHound user administrator
+```
+
+This workflow starts with tool discovery, identifies interesting ACLs, searches for specific permissions, and then investigates relationships associated with a particular user.
 
 
 
