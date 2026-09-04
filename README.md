@@ -432,7 +432,7 @@ Do not use ACEHound to access, modify, or compromise systems without authorizati
 
 **Yamish Marshall**
 
-[LinkedIn](www.linkedin.com/in/yamish-marshall-b8b931304)
+[LinkedIn](https://www.linkedin.com/in/yamish-marshall-b8b931304/)
 
 ---
 
